@@ -229,18 +229,43 @@
 
         <!-- Slide 6: Part 5 -->
         <div class="slide">
-            <div class="slide-content-wrapper">
+            <div class="slide-content-wrapper" style="max-width:1100px">
                 <h2 class="text-cg-orange font-bold text-xl uppercase tracking-wider mb-2">Phần 5</h2>
                 <h3 class="text-4xl font-bold mb-4">Hands-on: Tự Xây Dựng AI Service</h3>
                 <p class="text-lg text-cg-gray mb-6">Trình bày: <strong class="text-white">Software Architect</strong></p>
-                <div class="bg-cg-light_blue rounded-xl p-8 shadow-inner">
-                    <p class="font-medium text-xl mb-4">Thực hành Demo Flow:</p>
-                    <ol class="list-decimal pl-6 space-y-4 text-lg">
-                        <li>Kéo mô hình (Ví dụ: Llama 3) từ kho <strong class="text-cg-orange">Hugging Face</strong>.</li>
-                        <li>Đẩy script và setup môi trường lên <strong class="text-cg-orange">RunPod</strong> hoặc <strong class="text-cg-orange">FPT Cloud</strong> GPU.</li>
-                        <li>Viết nhanh một API bằng Python (FastAPI/Flask) bọc lại model để tạo endpoint giao tiếp.</li>
-                        <li>Tạo ứng dụng Frontend siêu nhỏ để gọi API này, chứng minh quy trình đưa AI vào app thực tế.</li>
-                    </ol>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Left: Demo Flow -->
+                    <div class="bg-cg-light_blue rounded-xl p-6">
+                        <p class="font-medium text-lg mb-3 text-cg-orange">🚀 Demo Flow cơ bản:</p>
+                        <ol class="list-decimal pl-5 space-y-2 text-base">
+                            <li>Tải mô hình mã nguồn mở (Llama 3, Mistral…) từ <strong>Hugging Face</strong>.</li>
+                            <li>Deploy lên <strong>RunPod</strong> hoặc <strong>FPT Cloud</strong> GPU.</li>
+                            <li>Bọc model bằng API (FastAPI / Flask).</li>
+                            <li>Kết nối Frontend gọi API → ứng dụng AI hoàn chỉnh.</li>
+                        </ol>
+                    </div>
+                    <!-- Right: Discussion Activities -->
+                    <div class="bg-white/10 rounded-xl p-6 border border-cg-orange/30">
+                        <p class="font-medium text-lg mb-3 text-cg-orange">💬 Danh sách thảo luận & hoạt động:</p>
+                        <ul class="space-y-3 text-base">
+                            <li class="flex items-start gap-2">
+                                <span class="text-cg-orange font-bold mt-0.5">①</span>
+                                <span>Demo tích hợp các <strong>mô hình AI miễn phí mạnh nhất</strong> với RunPod hoặc FPT Cloud.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-cg-orange font-bold mt-0.5">②</span>
+                                <span>Xây dựng <strong>quy trình làm Game tự động</strong> với AI (từ ý tưởng → asset → code → build).</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-cg-orange font-bold mt-0.5">③</span>
+                                <span>Xây dựng <strong>quy trình làm Web với AI</strong> (thiết kế UI → sinh code Frontend/Backend → deploy).</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-cg-orange font-bold mt-0.5">④</span>
+                                <span>Chia sẻ kinh nghiệm cá nhân & đề xuất ứng dụng AI vào giảng dạy tại CodeGym.</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
