@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI cho Giảng Viên CodeGym - Kế Hoạch Training</title>
+    <meta name="description" content="Kế hoạch và lộ trình cập nhật kiến thức AI cho giáo viên CodeGym, triển khai các công cụ từ cơ bản đến nâng cao.">
+    
+    <!-- Google Fonts: Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS (CDN for demo) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Config for Custom Colors & Animations -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        cg: {
+                            dark: '#030712',
+                            card: '#111827',
+                            primary: '#ef4444',     /* CodeGym Red */
+                            accent: '#facc15',      /* Accent Yellow */
+                            ai: '#8b5cf6',          /* AI Purple */
+                            cyan: '#06b6d4'         /* AI Cyan */
+                        }
+                    },
+                    animation: {
+                        'gradient-x': 'gradient-x 15s ease infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        'gradient-x': {
+                            '0%, 100%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'left center'
+                            },
+                            '50%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'right center'
+                            },
+                        },
+                        'float': {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            background-color: #030712;
+            color: #f8fafc;
+        }
+        
+        /* Glassmorphism Classes */
+        .glass {
+            background: rgba(17, 24, 39, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.4s ease;
+        }
+        
+        .glass:hover {
+            background: rgba(17, 24, 39, 0.8);
+            border-color: rgba(139, 92, 246, 0.4); /* Purple glow border */
+            box-shadow: 0 10px 40px -10px rgba(139, 92, 246, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #facc15 0%, #ef4444 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .text-gradient-ai {
+            background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Ambient Background Orbs */
+        .ambient-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            z-index: 0;
+            opacity: 0.4;
+            pointer-events: none;
+        }
+        .orb-1 { top: -100px; left: -100px; width: 400px; height: 400px; background: #8b5cf6; }
+        .orb-2 { bottom: 20%; right: -150px; width: 500px; height: 500px; background: #ef4444; }
+        .orb-3 { top: 40%; left: 30%; width: 300px; height: 300px; background: #06b6d4; opacity: 0.2; }
+    </style>
+</head>
+<body class="antialiased font-sans relative overflow-x-hidden min-h-screen">
+    
+    <!-- Background Elements -->
+    <div class="fixed inset-0 z-0 overflow-hidden pointer-events-none">
+        <div class="ambient-orb orb-1 animate-pulse-slow"></div>
+        <div class="ambient-orb orb-2 animate-float"></div>
+        <div class="ambient-orb orb-3"></div>
+        <!-- Grid pattern overlay -->
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+CjxyZWN0IHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgZmlsbD0ibm9uZSIvPgo8cGF0aCBkPSJNMCAwbDQwIDQwTTAgNDBsNDAgLTQwIiBzdHJva2U9InJnYmEoMjU1LDI1NSwyNTUsMC4wMikiIHN0cm9rZS13aWR0aD0iMSIvPgo8L3N2Zz4=')] opacity-20"></div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        
+        <!-- Header -->
+        <header class="text-center mb-20 space-y-4">
+            <div class="inline-block px-4 py-1.5 rounded-full border border-cg-primary/30 bg-cg-primary/10 text-cg-primary font-semibold text-sm tracking-wide mb-4">
+                CHƯƠNG TRÌNH ĐÀO TẠO NỘI BỘ 2026
+            </div>
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight">
+                AI Trong Giảng Dạy & Lập Trình <br />
+                <span class="text-gradient">Tại CodeGym</span>
+            </h1>
+            <p class="mt-6 text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+                Buổi huấn luyện chuyên sâu dành cho đội ngũ Giảng viên. Mục tiêu: Cập nhật xu hướng phát triển phần mềm với AI, làm chủ công cụ và ứng dụng thực tiễn trong công tác đào tạo.
+            </p>
+            <div class="flex items-center justify-center gap-6 mt-8 text-gray-300">
+                <div class="flex items-center gap-2">
+                    <svg class="w-5 h-5 text-cg-ai" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    <span>5 Diễn giả</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <svg class="w-5 h-5 text-cg-ai" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <span>1 Buổi chuyên sâu (3 tiếng)</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Timeline / Grid Layout for 5 Parts -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <!-- Part 1: Tổng quan AI -->
+            <div class="glass rounded-3xl p-8 flex flex-col relative overflow-hidden group">
+                <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                    <span class="text-9xl font-black text-white">1</span>
+                </div>
+                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange-400 to-red-600 flex items-center justify-center mb-6 shadow-lg">
+                    <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                </div>
+                <h3 class="text-2xl font-bold text-white mb-2">Tổng quan Xu hướng AI & Nền tảng</h3>
+                <p class="text-cg-accent font-medium mb-4">Speaker 1: Lead Instructor</p>
+                <div class="text-gray-400 space-y-3 flex-grow z-10">
+                    <p>Sự dịch chuyển từ "tự viết code" (Manual Coding) sang "quản lý quản trị AI lập trình" (AI-Driven Development).</p>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li>Thay đổi trong tư duy giảng dạy học viên.</li>
+                        <li><strong class="text-gray-200">Google AI Studio:</strong> Công cụ quyền năng để thử nghiệm các mẫu Prompt, so sánh hiệu năng các mô hình Gemini Pro/Flash nhanh chóng và miễn phí.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Part 2: Công cụ Code -->
+            <div class="glass rounded-3xl p-8 flex flex-col relative overflow-hidden group">
+                <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                    <span class="text-9xl font-black text-white">2</span>
+                </div>
+                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center mb-6 shadow-lg">
+                    <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                </div>
+                <h3 class="text-2xl font-bold text-white mb-2">Trợ lý Lập trình Tiên tiến</h3>
+                <p class="text-cg-accent font-medium mb-4">Speaker 2: Tech Expert</p>
+                <div class="text-gray-400 space-y-3 flex-grow z-10">
+                    <p>Giới thiệu các công cụ thay đổi hoàn toàn thói quen code thường ngày:</p>
+                    <ul class="list-disc pl-5 space-y-1 text-sm">
+                        <li><strong class="text-gray-200">Cursor (IDE):</strong> Trình biên tập fork từ VSCode. Sức mạnh của Composer giúp tạo, sửa nhiều file cùng lúc qua chat. Tab auto-completion cực mượt.</li>
+                        <li><strong class="text-gray-200">Claude Code (CLI):</strong> Công cụ mạnh để thao tác Terminal. Dùng Claude 3.7 thay cho các lệnh bash phức tạp, tìm lỗi trên toàn project siêu tốc.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Part 3: Agentic Coding -->
+            <div class="glass rounded-3xl p-8 flex flex-col relative overflow-hidden group lg:col-span-1 md:col-span-2">
+                <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                    <span class="text-9xl font-black text-white">3</span>
+                </div>
+                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center mb-6 shadow-lg">
+                    <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                </div>
+                <h3 class="text-2xl font-bold text-white mb-2">Đỉnh cao: Trợ lý Lập trình Tự hành</h3>
+                <p class="text-cg-accent font-medium mb-4">Speaker 3: AI Engineer</p>
+                <div class="text-gray-400 space-y-3 flex-grow z-10">
+                    <p>Sự khác biệt cốt lõi giữa <strong>AI Assistant</strong> (gợi ý) và <strong>AI Agent</strong> (Tự hành).</p>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li><strong class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400 font-bold">Antigravity (Google DeepMind):</strong> Demo khả năng lên kế hoạch (Planning mode), đọc và phân tích cấu trúc dự án phức tạp, chủ động sửa lỗi, chạy test và hoàn tất yêu cầu từ đầu đến cuối một cách tự chủ.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Part 4: Hạ tầng AI -->
+            <div class="glass rounded-3xl p-8 flex flex-col relative overflow-hidden group md:col-span-1 lg:col-span-2">
+                <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                    <span class="text-9xl font-black text-white">4</span>
+                </div>
+                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-green-400 to-emerald-600 flex items-center justify-center mb-6 shadow-lg">
+                    <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path></svg>
+                </div>
+                <h3 class="text-2xl font-bold text-white mb-2">Tài nguyên & Hạ tầng Phần cứng AI</h3>
+                <p class="text-cg-accent font-medium mb-4">Speaker 4: DevOps / Cloud Specialist</p>
+                <div class="text-gray-400 space-y-3 flex-grow z-10 flex flex-col md:flex-row gap-6">
+                    <div class="flex-1">
+                        <strong class="text-gray-200 block mb-1">Môi trường lấy mẫu: Hugging Face </strong>
+                        <p class="text-sm">Được mệnh danh là "GitHub của AI", nơi tài tải các Dataset chuẩn và Model (LLMs, Computer Vision) mã nguồn mở. Tự tin trải nghiệm trên Spaces.</p>
+                    </div>
+                    <div class="flex-1">
+                        <strong class="text-gray-200 block mb-1">Máy chủ & Thuê GPU: FPT Cloud & RunPod</strong>
+                        <p class="text-sm">
+                            - <strong>RunPod:</strong> Nền tảng Cloud GPU linh hoạt, giá siêu rẻ (tính theo giờ), setup sẵn các template Container (Jupyter, PyTorch) chỉ bằng vài cú nhấp chuột.<br>
+                            - <strong>FPT AI Factory (Cloud GPU):</strong> Giải pháp máy chủ nội bộ quốc gia với hạ tầng card xịn nhất (NVIDIA H100, A100), hoàn hảo cho lưu trữ dữ liệu an toàn dành cho doanh nghiệp VN.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Part 5: Thực hành -->
+            <div class="glass rounded-3xl p-8 flex flex-col relative overflow-hidden group border-cg-ai/30 shadow-[0_0_30px_rgba(139,92,246,0.15)] md:col-span-2 lg:col-span-1">
+                <div class="absolute inset-0 bg-gradient-to-b from-cg-ai/5 to-transparent opacity-50"></div>
+                <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                    <span class="text-9xl font-black text-white">5</span>
+                </div>
+                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-700 flex items-center justify-center mb-6 shadow-lg relative z-10">
+                    <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                </div>
+                <h3 class="text-2xl font-bold text-white mb-2 relative z-10">Hand-on: Xây dựng AI Service</h3>
+                <p class="text-pink-400 font-medium mb-4 relative z-10">Speaker 5: Software Architect</p>
+                <div class="text-gray-300 space-y-3 flex-grow z-10">
+                    <p class="text-sm font-semibold text-white">Thực hành từ A-Z:</p>
+                    <ul class="list-disc pl-5 space-y-2 text-sm">
+                        <li>Tải xuống Llama 3 hoặc Mistral từ <strong>Hugging Face</strong>.</li>
+                        <li>Đẩy model lên một máy ảo thuê trực tiếp trên <strong>RunPod</strong> hoặc <strong>FPT Cloud</strong>.</li>
+                        <li>Viết API bằng <code class="bg-gray-800 px-1 py-0.5 rounded text-cg-accent">FastAPI</code> để thiết lập endpoint cho model.</li>
+                        <li>Tích hợp thử phản hồi vào một ứng dụng Frontend đơn giản tự code (React/HTML).</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer Call to action -->
+        <div class="mt-20 text-center">
+            <button class="px-8 py-4 bg-white text-black font-bold rounded-full hover:bg-gray-200 transition-colors shadow-[0_0_40px_rgba(255,255,255,0.3)] hover:shadow-[0_0_60px_rgba(255,255,255,0.5)] transform hover:-translate-y-1 flex items-center gap-2 mx-auto">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                Tải Xuống PDF Slide Các Phần
+            </button>
+            <p class="mt-6 text-gray-500 text-sm">Thiết kế cho CodeGym Instructors Team © 2026. Lộ trình AI tiêu chuẩn.</p>
+        </div>
+
+    </div>
+</body>
+</html>
