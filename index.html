@@ -102,7 +102,7 @@
 <body class="w-screen h-screen">
 
     <!-- Top Left Brand -->
-    <div class="absolute top-8 left-12 z-50">
+    <div id="topBrand" class="absolute top-8 left-12 z-50 transition-opacity duration-300 opacity-0 pointer-events-none hidden md:block">
         <div class="brand-logo">CODEG<span class="accent">Y</span>M</div>
         <p class="text-xs uppercase tracking-widest text-cg-gray mt-1">Hệ thống đào tạo lập trình hiện đại</p>
     </div>
@@ -112,7 +112,12 @@
 
         <!-- Slide 1: Welcome -->
         <div class="slide active">
-            <div class="text-center max-w-4xl px-4">
+            <div class="text-center max-w-5xl px-4 flex flex-col items-center">
+                
+                <!-- Main Cover Logo -->
+                <div class="brand-logo text-7xl md:text-[6rem] mb-2 leading-none">CODEG<span class="accent">Y</span>M</div>
+                <p class="text-sm md:text-base uppercase tracking-widest text-cg-gray mb-12">Hệ thống đào tạo lập trình hiện đại</p>
+
                 <div class="inline-block px-4 py-1 border border-cg-orange text-cg-orange font-bold text-sm rounded-full mb-6 uppercase">
                     Chương trình đào tạo nội bộ
                 </div>
@@ -283,6 +288,8 @@
 
         const dots = document.querySelectorAll('.dot');
 
+        const topBrand = document.getElementById('topBrand');
+
         function updateSlides() {
             slides.forEach((slide, index) => {
                 if (index === currentSlide) {
@@ -299,6 +306,15 @@
                     dot.classList.remove('active');
                 }
             });
+
+            // Toggle top logo
+            if (currentSlide === 0) {
+                topBrand.classList.add('opacity-0', 'pointer-events-none');
+                topBrand.classList.remove('opacity-100');
+            } else {
+                topBrand.classList.remove('opacity-0', 'pointer-events-none');
+                topBrand.classList.add('opacity-100');
+            }
         }
 
         function goToSlide(index) {
